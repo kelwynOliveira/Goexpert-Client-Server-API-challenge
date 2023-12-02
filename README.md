@@ -5,7 +5,7 @@
 - **Start date**: 25/September/2023
 - **Duration**: 6 months
 - **Workload**: 360 hours
-- **School**: Faculdade Brasilia / FullCycle
+- **School**: Faculdade Brasilia / [FullCycle](https://fullcycle.com.br/)
 
 ## Description
 
