@@ -1,0 +1,1 @@
+# Generating GraphQL server skeleton

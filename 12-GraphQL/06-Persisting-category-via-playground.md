@@ -1,0 +1,1 @@
+# Persisting category via playground
