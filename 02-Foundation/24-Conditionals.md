@@ -34,7 +34,10 @@ switch <variable>{
 
 ## Boolean operators
 
-| Symbol | Meaning |
-| ------ | ------- |
-| `&&`   | And     |
-| `\|\|` | Or      |
+| Symbol | Meaning   |
+| ------ | --------- |
+| `&&`   | And       |
+| `\|\|` | Or        |
+| `!`    | Not       |
+| `==`   | Equal     |
+| `!=`   | Not equal |
