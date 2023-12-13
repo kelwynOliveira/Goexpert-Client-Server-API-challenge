@@ -15,7 +15,7 @@ The client.go should make an HTTP request to server.go asking for the dollar exc
  
 server.go must consume the API containing the Dollar/Real exchange rate at the address: https://economia.awesomeapi.com.br/json/last/USD-BRL and then return the result to the client in JSON format.
  
-Using the "context" package, server.go should record each quote received in the SQLite database, with the maximum timeout for calling the dollar quote API being 200ms and the maximum timeout for persisting the data in the database being 10ms.
+Using the "context" package, server.go should record each quotation received in the SQLite database, with the maximum timeout for calling the dollar quote API being 200ms and the maximum timeout for persisting the data in the database being 10ms.
  
 The client.go will only need to receive the current exchange rate from the server.go (JSON "bid" field). Using the "context" package, client.go will have a maximum timeout of 300ms to receive the result from server.go.
  
