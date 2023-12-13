@@ -1,13 +1,3 @@
 # Starting with GORM
 
-```go
-package main
-
-import (
-  ""
-)
-
-func main(){
-
-}
-```
+<a href="https://gorm.io" target="_blank">gorm.io</a>
