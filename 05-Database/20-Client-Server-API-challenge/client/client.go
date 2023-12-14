@@ -1,38 +1,64 @@
-package client
+package main
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"time"
 )
 
-func Client() {
-	// Using the "context" package, client.go will have a maximum timeout of 300ms to receive the result from server.go.
+type Price struct {
+	Bid string `json:"bid"`
+}
+
+func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Millisecond)
 	defer cancel()
 
-	// The client.go should make an HTTP request to server.go asking for the dollar exchange rate.
 	request, err := http.NewRequestWithContext(ctx, "GET", "http://localhost:8080/cotacao", nil)
 	if err != nil {
-		panic(err)
+		log.Println(err)
 	}
+
 	response, err := http.DefaultClient.Do(request)
 	if err != nil {
-		panic(err)
+		log.Println(err)
 	}
 	defer response.Body.Close()
 
-	// The client.go will only need to receive the current exchange rate from the server.go (JSON "bid" field).
-	io.Copy(os.Stdout, response.Body)
+	result, err := io.ReadAll(response.Body)
+	if err != nil {
+		log.Println(err)
+	}
 
-	// The client.go will have to save the current exchange rate in a "cotacao.txt" file in the following format: Dollar: {value}
-	// file, err := os.Create("cotacao.txt")
-	// if err != nil {
-	// 	fmt.Fprintf(os.Stderr, "Error creating the file: %v.\n", err)
-	// }
-	// defer file.Close()
-	// _, err := file.WriteString(fmt.Sprintf("Dollar: %v", response.Body))
+	err = SaveInFile(result)
+	if err != nil {
+		log.Println(err)
+	}
+}
 
+func SaveInFile(result []byte) error {
+	var price Price
+	err := json.Unmarshal(result, &price)
+	if err != nil {
+		return err
+	}
+
+	file, err := os.Create("cotacao.txt")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	size, err := fmt.Fprintln(file, "Dólar:", price.Bid)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("File created with success! Size: %d bytes\n", size)
+
+	return nil
 }

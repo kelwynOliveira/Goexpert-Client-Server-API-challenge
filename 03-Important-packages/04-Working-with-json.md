@@ -70,7 +70,7 @@ type Account struct{
 
 
 func main(){
-  jsonFile := [byte{`{"Number": 2, "Balance": 200}`}]
+  jsonFile := []byte(`{"Number": 2, "Balance": 200}`)
   var accountX Account
 
   err = json.Unmarshal(jsonFile, &accountX)
@@ -98,7 +98,7 @@ type Account struct{
 }
 
 func main(){
-  jsonFile := [byte{`{"n": 2, "b": 200}`}]
+  jsonFile := []byte(`{"n": 2, "b": 200}`)
   var accountX Account
   err = json.Unmarshal(jsonFile, &accountX)
   if err != nil{

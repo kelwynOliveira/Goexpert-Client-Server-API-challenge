@@ -56,7 +56,7 @@ func main(){
     defer file.Close()
 
 // Wrinting in flie
-    _, err := file.WriteString(fmt.Sprintf("CEP: %s, Localidade: %s, UF: %s", data.CEP, data.Localidade, data.Uf))
+    _, err = file.WriteString(fmt.Sprintf("CEP: %s, Localidade: %s, UF: %s", data.CEP, data.Localidade, data.Uf))
 
     fmt.Println("Success creating the file!")
     fmt.Println("City: %s", data.Localidade)

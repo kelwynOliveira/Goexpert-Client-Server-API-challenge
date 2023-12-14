@@ -21,7 +21,7 @@ func handler(w http.ResponseWriter, r *http.Request){
     // Prints on stdout
       log.Println("Request succeeded.")
       // Prints on browser
-      w.Write([]byte("Request cancelled."))
+      w.Write([]byte("Request succeeded."))
     case <- ctx.Done():
     // Prints on stdout
       log.Println("Request cancelled by client")
