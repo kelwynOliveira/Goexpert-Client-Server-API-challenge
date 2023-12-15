@@ -74,12 +74,10 @@ The project structure will then be:
 ├── Project
 │&nbsp;└── client
 │&nbsp;&nbsp;└── client.go
-│&nbsp;&nbsp;└── cotacao.txt
 │&nbsp;└── server
 │&nbsp;&nbsp;└── server.go
 └── docker-compose.yaml
 └── go.mod
-└── go.sum
 </samp>
 
 ### The Server System
@@ -241,8 +239,7 @@ func NewQuote(quote *QuoteAPI) *Quote {
 }
 
 func DataBase(quote *QuoteAPI) error {
-	dsn := "root:root@tcp(localhost:3306)/goexpert?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./quotes.db"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
@@ -271,7 +268,7 @@ import (
 	"net/http"
 	"time"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -308,7 +305,7 @@ func HandleQuote(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  // Look into API
+	// Look into API
 	quotation, err := SearchUSDBRL()
 	if err != nil {
 		log.Println(err)
@@ -316,7 +313,8 @@ func HandleQuote(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  // Saves on DataBase
+	// Saves on DataBase
+
 	err = DataBase(quotation)
 	if err != nil {
 		log.Println(err)
@@ -324,7 +322,7 @@ func HandleQuote(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  // Returns the Bid in json format
+	// Returns the Bid in json format
 	var bid Price
 	bid.Bid = quotation.USDBRL.Bid
 	w.Header().Set("Content-Type", "application/json")
@@ -378,8 +376,7 @@ func NewQuote(quote *QuoteAPI) *Quote {
 }
 
 func DataBase(quote *QuoteAPI) error {
-	dsn := "root:root@tcp(localhost:3306)/goexpert?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./quotes.db"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}

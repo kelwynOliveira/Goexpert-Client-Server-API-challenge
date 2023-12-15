@@ -54,6 +54,7 @@ func HandleQuote(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Saves on DataBase
+
 	err = DataBase(quotation)
 	if err != nil {
 		log.Println(err)
@@ -115,8 +116,7 @@ func NewQuote(quote *QuoteAPI) *Quote {
 }
 
 func DataBase(quote *QuoteAPI) error {
-	dsn := "root:root@tcp(localhost:3306)/goexpert?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./quotes.db"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
