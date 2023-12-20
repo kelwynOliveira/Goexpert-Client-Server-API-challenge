@@ -33,3 +33,6 @@ Postgraduation in Advanced Go Development.
 1. [DI](./17-DI/)
 1. [Clean Archtecture](./18-Clean-Archtecture/)
 1. [Deploy with Docker and Kubernets](./19-Deploy-with-Docker-and-Kubernets/)
+
+## Projects
+1. [Client-Server-API](./05-Database/20-Client-Server-API-challenge/)
