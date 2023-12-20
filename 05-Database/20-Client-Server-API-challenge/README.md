@@ -70,13 +70,14 @@ services:
 
 The project structure will then be:
 
-<samp>.
-├── Project
-│&nbsp;└── client
-│&nbsp;&nbsp;└── client.go
-│&nbsp;└── server
-│&nbsp;&nbsp;└── server.go
-└── docker-compose.yaml
+<samp>
+.<br/>
+├── Project<br/>
+│&nbsp;└── client<br/>
+│&nbsp;&nbsp;└── client.go<br/>
+│&nbsp;└── server<br/>
+│&nbsp;&nbsp;└── server.go<br/>
+└── docker-compose.yaml<br/>
 └── go.mod
 </samp>
 
