@@ -1,1 +1,0 @@
-# Doing categories queries

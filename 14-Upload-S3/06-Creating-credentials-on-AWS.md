@@ -1,1 +1,0 @@
-# Creating credentials on AWS

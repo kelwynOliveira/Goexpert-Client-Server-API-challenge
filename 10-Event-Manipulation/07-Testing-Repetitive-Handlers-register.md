@@ -1,1 +1,0 @@
-# Testing repetitive handlers register

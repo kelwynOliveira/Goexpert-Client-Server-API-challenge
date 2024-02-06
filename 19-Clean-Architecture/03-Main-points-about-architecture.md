@@ -1,1 +1,0 @@
-# Main points about architecture

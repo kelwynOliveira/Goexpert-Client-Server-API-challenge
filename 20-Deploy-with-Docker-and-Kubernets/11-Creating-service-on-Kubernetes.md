@@ -1,1 +1,0 @@
-# Creating service on kubernetes

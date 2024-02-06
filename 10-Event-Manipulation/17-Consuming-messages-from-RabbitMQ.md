@@ -1,1 +1,0 @@
-# Consuming messages from RabbitMQ

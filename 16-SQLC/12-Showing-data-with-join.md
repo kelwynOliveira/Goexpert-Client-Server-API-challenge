@@ -1,1 +1,0 @@
-# Showing data with join

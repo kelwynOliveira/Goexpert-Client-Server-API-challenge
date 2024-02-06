@@ -1,1 +1,0 @@
-# Testing product creation endpoint

@@ -1,1 +1,0 @@
-# Generating our application skeleton

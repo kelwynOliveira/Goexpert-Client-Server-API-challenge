@@ -1,1 +1,0 @@
-# Customer creation practice
